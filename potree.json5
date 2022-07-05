@@ -1,0 +1,358 @@
+{
+	type: 'Potree',
+	version: 1.7,
+	missionTitle: '',
+	missionDescription: '',
+	missionStartDate: '',
+	settings: {
+		pointBudget: 1000000,
+		fov: 60,
+		edlEnabled: false,
+		edlRadius: 1.4,
+		edlStrength: 0.4,
+		background: 'black',
+		minNodeSize: 30,
+		showBoundingBoxes: false,
+	},
+	view: {
+		position: [
+			165767.0182574686,
+			-65754.57075746817,
+			213459.66964106873,
+		],
+		target: [
+			50006.47650000006,
+			50005.970999999976,
+			49749.54149999996,
+		],
+	},
+	classification: {
+		'0': {
+			visible: true,
+			name: 'never classified',
+			color: [
+				0.5,
+				0.5,
+				0.5,
+				1,
+			],
+		},
+		'1': {
+			visible: true,
+			name: 'unclassified',
+			color: [
+				0.5,
+				0.5,
+				0.5,
+				1,
+			],
+		},
+		'2': {
+			visible: true,
+			name: 'ground',
+			color: [
+				0.63,
+				0.32,
+				0.18,
+				1,
+			],
+		},
+		'3': {
+			visible: true,
+			name: 'low vegetation',
+			color: [
+				0,
+				1,
+				0,
+				1,
+			],
+		},
+		'4': {
+			visible: true,
+			name: 'medium vegetation',
+			color: [
+				0,
+				0.8,
+				0,
+				1,
+			],
+		},
+		'5': {
+			visible: true,
+			name: 'high vegetation',
+			color: [
+				0,
+				0.6,
+				0,
+				1,
+			],
+		},
+		'6': {
+			visible: true,
+			name: 'building',
+			color: [
+				1,
+				0.66,
+				0,
+				1,
+			],
+		},
+		'7': {
+			visible: true,
+			name: 'low point(noise)',
+			color: [
+				1,
+				0,
+				1,
+				1,
+			],
+		},
+		'8': {
+			visible: true,
+			name: 'key-point',
+			color: [
+				1,
+				0,
+				0,
+				1,
+			],
+		},
+		'9': {
+			visible: true,
+			name: 'water',
+			color: [
+				0,
+				0,
+				1,
+				1,
+			],
+		},
+		'12': {
+			visible: true,
+			name: 'overlap',
+			color: [
+				1,
+				1,
+				0,
+				1,
+			],
+		},
+		DEFAULT: {
+			visible: true,
+			name: 'default',
+			color: [
+				0.3,
+				0.6,
+				0.6,
+				0.5,
+			],
+		},
+	},
+	pointcloudFolderStr: [],
+	pointclouds: [
+		{
+			name: 'green07',
+			nodeId: 'j1_9',
+			parentId: 'pointclouds',
+			state: {
+				loaded: true,
+				opened: false,
+				selected: false,
+				disabled: false,
+				checked: true,
+			},
+			url: '../user_pointclouds/green07/metadata.json',
+			position: [
+				501.40599999999904,
+				500.875,
+				0.428,
+			],
+			rotation: [
+				0,
+				0,
+				0,
+				'XYZ',
+			],
+			scale: [
+				1,
+				1,
+				1,
+			],
+			material: {
+				activeAttributeName: 'rgba',
+				ranges: [
+					{
+						name: 'elevationRange',
+						value: [
+							0.428,
+							9999.993,
+						],
+					},
+					{
+						name: 'intensityRange',
+						value: [
+							0,
+							0,
+						],
+					},
+				],
+				size: 1,
+				minSize: 2,
+				pointSizeType: 'ADAPTIVE',
+				matcap: 'matcap.jpg',
+			},
+		},
+	],
+	paths: [
+		{
+			name: 'P_0A753A90',
+			isActive: true,
+			waypoints: [
+				{
+					location: {
+						x: 56035.065886718745,
+						y: 82269.04709375,
+						z: 5370.9201875,
+					},
+					sphereId: '6CF24CFC-9EE5-406E-8796-11848B6BFE45',
+				},
+				{
+					location: {
+						x: 72747.43725,
+						y: 20599.154296875,
+						z: 3773.344015625,
+					},
+					sphereId: '4E2153A5-2FE6-4FFA-9A32-2EBABFDC1996',
+				},
+				{
+					location: {
+						x: 26142.0935,
+						y: 55365.03515625,
+						z: 8563.6496796875,
+					},
+					sphereId: '61CDB312-2EA7-4DE3-815F-EE22FE49CDE8',
+				},
+				{
+					location: {
+						x: 41363.66771875,
+						y: 19439.212890625,
+						z: 5014.054953125,
+					},
+					sphereId: 'D7A4858F-C1E4-40B8-96BC-CA8C5E628472',
+				},
+				{
+					location: {
+						x: 86025.6794375,
+						y: 13295.8115234375,
+						z: 4403.41091015625,
+					},
+					sphereId: '82E84D6E-40A2-4F7C-A427-F2519B5D5238',
+				},
+				{
+					location: {
+						x: 70380.29684375,
+						y: 75568.87521875,
+						z: 508.49001171875,
+					},
+					sphereId: '268EA7F0-D729-48CE-964A-50B1D734E497',
+				},
+			],
+			uuid: '90FD8849-C73D-45CB-8A2E-ABDAA2B566E2',
+			sphereIds: [
+				'6CF24CFC-9EE5-406E-8796-11848B6BFE45',
+				'4E2153A5-2FE6-4FFA-9A32-2EBABFDC1996',
+				'61CDB312-2EA7-4DE3-815F-EE22FE49CDE8',
+				'D7A4858F-C1E4-40B8-96BC-CA8C5E628472',
+				'82E84D6E-40A2-4F7C-A427-F2519B5D5238',
+				'268EA7F0-D729-48CE-964A-50B1D734E497',
+			],
+			showDistances: false,
+			showArea: false,
+			closed: false,
+			showEdges: true,
+			color: [
+				1,
+				0.03137254901960784,
+				0,
+			],
+			points: [
+				[
+					56035.065886718745,
+					82269.04709375,
+					5370.9201875,
+				],
+				[
+					72747.43725,
+					20599.154296875,
+					3773.344015625,
+				],
+				[
+					26142.0935,
+					55365.03515625,
+					8563.6496796875,
+				],
+				[
+					41363.66771875,
+					19439.212890625,
+					5014.054953125,
+				],
+				[
+					86025.6794375,
+					13295.8115234375,
+					4403.41091015625,
+				],
+				[
+					70380.29684375,
+					75568.87521875,
+					508.49001171875,
+				],
+			],
+		},
+	],
+	areas: [],
+	regions: [],
+	pois: [
+		{
+			name: 'P_198F590A',
+			isActive: true,
+			waypoints: [
+				{
+					location: {
+						x: 29724.367046875,
+						y: 26946.864000976562,
+						z: 7163.23805859375,
+					},
+					sphereId: 'C64074F9-1A16-4F82-B684-662FB7577ABD',
+				},
+			],
+			uuid: 'BCA11C40-6B12-4C1E-9310-09BE71BF2EE5',
+			sphereIds: [
+				'C64074F9-1A16-4F82-B684-662FB7577ABD',
+			],
+			showDistances: false,
+			showArea: false,
+			closed: true,
+			showEdges: true,
+			color: [
+				1,
+				0.03137254901960784,
+				0,
+			],
+			points: [
+				[
+					29724.367046875,
+					26946.864000976562,
+					7163.23805859375,
+				],
+			],
+		},
+	],
+	measurements: [],
+	volumes: [],
+	tags: [],
+	cameraAnimations: [],
+	profiles: [],
+	annotations: [],
+	orientedImages: [],
+	geopackages: [],
+}
