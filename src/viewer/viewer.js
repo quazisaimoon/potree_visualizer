@@ -326,6 +326,7 @@ export class Viewer extends EventDispatcher {
           let options = [
             "rgba",
             "elevation",
+            "shadow",
             // "level of detail",
             // "indices",
             // "intensity",
@@ -353,7 +354,7 @@ export class Viewer extends EventDispatcher {
         $(domElement).append(elToolbar);
       }
 
-      this.pointCloudLoadedCallback = args.onPointCloudLoaded || function () {};
+      this.pointCloudLoadedCallback = args.onPointCloudLoaded || function () { };
 
       // if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
       //	defaultSettings.navigation = "Orbit";
