@@ -130,7 +130,7 @@ uniform sampler2D classificationLUT;
 uniform sampler2D matcapTextureUniform;
 #endif
 
-#if defined(color_type_shadow)
+#if defined(color_type_occupancy)
 uniform sampler2D shadowTextureUniform;
 #endif
 
@@ -591,7 +591,7 @@ vec3 getMatcap(){
 }
 #endif
 
-#if defined(color_type_shadow)
+#if defined(color_type_occupancy)
 // Shadow Material
 vec3 getShadow(){
 	// Get the world position projected onto xy plane
@@ -677,7 +677,7 @@ vec3 getColor(){
 	color=getCompositeColor();
 	#elif defined color_type_matcap
 	color=getMatcap();
-	#elif defined color_type_shadow
+	#elif defined color_type_occupancy
 	color=getShadow();
 	#else
 	color=getExtra();

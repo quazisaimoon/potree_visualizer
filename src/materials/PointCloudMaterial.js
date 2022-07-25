@@ -350,11 +350,11 @@ export class PointCloudMaterial extends THREE.RawShaderMaterial {
 		}
 	}
 
-	get shadow() {
+	get occupancy() {
 		return this._shadow;
 	}
 
-	set shadow(value) {
+	set occupancy(value) {
 		if (this._shadow !== value) {
 			this._shadow = value;
 			this.shadowTexture = Potree.PointCloudMaterial.generateShadowTexture(this._shadow);

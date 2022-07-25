@@ -855,8 +855,8 @@ export class Sidebar {
 
                 let minBoundingBox = e.pointcloud.root.octreeGeometry.pointAttributes.attributes[0].initialRange[0];
                 let maxBoundingBox = e.pointcloud.root.octreeGeometry.pointAttributes.attributes[0].initialRange[1];
-                material.activeAttributeName = "rgba";
-                material.shadow = "test.png";
+                material.activeAttributeName = "occupancy";
+                material.occupancy = "test.png";
                 material.size = 1;
                 material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
                 material.shape = Potree.PointShape.SQUARE;

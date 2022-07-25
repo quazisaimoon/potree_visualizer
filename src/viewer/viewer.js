@@ -326,7 +326,7 @@ export class Viewer extends EventDispatcher {
           let options = [
             "rgba",
             "elevation",
-            "shadow",
+            "occupancy",
             // "level of detail",
             // "indices",
             // "intensity",
