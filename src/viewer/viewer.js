@@ -1587,6 +1587,27 @@ export class Viewer extends EventDispatcher {
 
 					</div>
 
+          <div class="divider">Vehicle specifications</div>
+					<div id="vehicle_details">
+						<label for="vehicle_speed">Vehicle speed (m/s):</label>
+						<input 
+							value="0.05"
+							type="number" 
+							id="vehicle_speed" 
+							class="form_input" 
+							name="vehicle_speed"
+						>
+            <label for="vehicle_max_slope">Max slope (deg):</label>
+						<input 
+							value="12"
+							type="number" 
+							id="vehicle_max_slope" 
+							class="form_input" 
+							name="vehicle_max_slope"
+						>
+					</div>
+          
+
 					<div class="divider">Details</div>
 					<div id="scene_object_properties"></div>
 					
