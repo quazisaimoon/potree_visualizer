@@ -239,9 +239,9 @@ export class Sidebar {
 
       let currentShow =
         this.pathTool.showLabels &&
-        this.areaTool.showLabels &&
-        // this.regionTool.showLabels &&
-        this.tagTool.showLabels
+          this.areaTool.showLabels &&
+          // this.regionTool.showLabels &&
+          this.tagTool.showLabels
           ? "HIDE"
           : "SHOW";
       elShow.find(`input[value=${currentShow}]`).trigger("click");
@@ -853,9 +853,18 @@ export class Sidebar {
                 const pointcloud = e.pointcloud;
                 const material = pointcloud.material;
 
+                let minBoundingBox = e.pointcloud.root.octreeGeometry.pointAttributes.attributes[0].initialRange[0];
+                let maxBoundingBox = e.pointcloud.root.octreeGeometry.pointAttributes.attributes[0].initialRange[1];
                 material.activeAttributeName = "rgba";
-                material.minSize = 2;
+                material.shadow = "test.png";
+                material.size = 1;
                 material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
+                material.shape = Potree.PointShape.SQUARE;
+
+
+                let iscale = 1;
+                material.xrange = [minBoundingBox[0] * iscale, maxBoundingBox[0] * iscale];
+                material.yrange = [minBoundingBox[1] * iscale, maxBoundingBox[1] * iscale];
 
                 viewer.scene.addPointCloud(pointcloud);
                 viewer.fitToScreen();
