@@ -86,28 +86,28 @@ export class Sidebar {
     let elToolbar = $("#wp_tools");
 
     // PATH
-    elToolbar.append(
-      this.createToolIcon(
-        Potree.resourcePath + "/icons/path.svg",
-        "[title]tt.path",
-        () => {
-          $("#menu_paths").next().slideDown();
+    // elToolbar.append(
+    //   this.createToolIcon(
+    //     Potree.resourcePath + "/icons/path.svg",
+    //     "[title]tt.path",
+    //     () => {
+    //       $("#menu_paths").next().slideDown();
 
-          let path = this.pathTool.startInsertion({
-            showDistances: false,
-            closed: false,
-            // name: this.getWpName(),
-          });
+    //       let path = this.pathTool.startInsertion({
+    //         showDistances: false,
+    //         closed: false,
+    //         // name: this.getWpName(),
+    //       });
 
-          let wpToolsRoot = $("#jstree_scene").jstree().get_json("waypoints");
-          let jsonNode = wpToolsRoot.children.find(
-            (child) => child.data.uuid === path.uuid
-          );
-          $.jstree.reference(jsonNode.id).deselect_all();
-          $.jstree.reference(jsonNode.id).select_node(jsonNode.id);
-        }
-      )
-    );
+    //       let wpToolsRoot = $("#jstree_scene").jstree().get_json("waypoints");
+    //       let jsonNode = wpToolsRoot.children.find(
+    //         (child) => child.data.uuid === path.uuid
+    //       );
+    //       $.jstree.reference(jsonNode.id).deselect_all();
+    //       $.jstree.reference(jsonNode.id).select_node(jsonNode.id);
+    //     }
+    //   )
+    // );
 
     // POI
     elToolbar.append(
@@ -549,6 +549,7 @@ export class Sidebar {
 				</div>
 			`);
 
+
       let elDownloadPotree = elExport.find("#to_flask_export_btn").parent();
 
       elDownloadPotree.click((event) => {
@@ -573,6 +574,88 @@ export class Sidebar {
           body: JSON.stringify(dataString),
         }).then((response) => {
           //do something awesome that makes the world a better place
+        });
+      });
+
+
+
+    }
+
+    {
+      let elExport = elScene.next().find("#update_occupancy_grid");
+
+      elExport.append(`
+      <div class="divider">Vehicle specifications</div>
+					<div id="vehicle_details">
+						<label for="vehicle_speed">Vehicle speed (m/s):</label>
+						<input 
+							value="0.05"
+							type="number" 
+							id="vehicle_speed" 
+							class="form_input" 
+							name="vehicle_speed"
+						>
+            <label for="vehicle_max_slope">Max slope (deg):</label>
+						<input 
+							value="12"
+							type="number" 
+							id="vehicle_max_slope" 
+							class="form_input" 
+							name="vehicle_max_slope"
+						>
+					</div>
+				<div class="scene-btn-container ">
+						<button
+							class="ui-button ui-state-default ui-state-active scene-btn"
+							id="update_occupancy_grid_btn" 
+							name="update_occupancy_grid_btn"
+							>Update occupancy grid
+						</button>
+				</div>
+			`);
+
+      let elUpdateOccupancyGrid = elExport.find("#update_occupancy_grid_btn").parent();
+
+      elUpdateOccupancyGrid.click((event) => {
+        let speed = elExport.find("#vehicle_speed")[0].value;
+        let slope = elExport.find("#vehicle_max_slope")[0].value;
+        if (speed < 0) {
+          speed = -1 * speed;
+        }
+        if (slope < 0) {
+          slope = -1 * slope;
+        }
+        const flaskURL = "http://127.0.0.1:5000/update_occupancy_grid";
+        let dataString = { "speed": speed, "slope": slope };
+        fetch(flaskURL, {
+          method: "post",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+
+          //make sure to serialize your JSON body
+          body: JSON.stringify(dataString),
+        }).then((response) => {
+          console.log(response);
+          let pointcloud = this.viewer.scene.pointclouds[this.viewer.scene.pointclouds.length - 1];
+          pointcloud.material.activeAttributeName = "rgba";
+          pointcloud.material.occupancy = "F1_chequered_flag.png";
+          pointcloud.material.occupancy = "occupancy.png";
+          console.log(pointcloud);
+          let minBoundingBox = pointcloud.root.geometryNode.octreeGeometry.pointAttributes.attributes[0].initialRange[0];
+          let maxBoundingBox = pointcloud.root.geometryNode.octreeGeometry.pointAttributes.attributes[0].initialRange[1];
+          let material = pointcloud.material;
+          material.activeAttributeName = "occupancy";
+          material.size = 1;
+          material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
+          material.shape = Potree.PointShape.SQUARE;
+
+
+          let iscale = 1;
+          material.xrange = [minBoundingBox[0] * iscale, maxBoundingBox[0] * iscale];
+          material.yrange = [minBoundingBox[1] * iscale, maxBoundingBox[1] * iscale];
+          console.log("GDGD");
         });
       });
     }
@@ -855,8 +938,7 @@ export class Sidebar {
 
                 let minBoundingBox = e.pointcloud.root.octreeGeometry.pointAttributes.attributes[0].initialRange[0];
                 let maxBoundingBox = e.pointcloud.root.octreeGeometry.pointAttributes.attributes[0].initialRange[1];
-                material.activeAttributeName = "occupancy";
-                material.occupancy = "test.png";
+                material.activeAttributeName = "rgba";
                 material.size = 1;
                 material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
                 material.shape = Potree.PointShape.SQUARE;
