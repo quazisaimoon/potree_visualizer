@@ -1,9 +1,11 @@
 {
 	type: 'Potree',
 	version: 1.7,
-	missionTitle: '',
-	missionDescription: '',
+	missionTitle: '222',
+	missionDescription: '222',
 	missionStartDate: '',
+	missionStartTime: '',
+	missionStartTimeISO: null,
 	settings: {
 		pointBudget: 1000000,
 		fov: 60,
@@ -16,14 +18,14 @@
 	},
 	view: {
 		position: [
-			165767.0182574686,
-			-65754.57075746817,
-			213459.66964106873,
+			143230.50362956093,
+			750850.4965121662,
+			75350.00691935403,
 		],
 		target: [
-			50006.47650000006,
-			50005.970999999976,
-			49749.54149999996,
+			102353.750040147,
+			791727.25010158,
+			17541.547607421868,
 		],
 	},
 	classification: {
@@ -151,7 +153,7 @@
 	pointcloudFolderStr: [],
 	pointclouds: [
 		{
-			name: 'green07',
+			name: 'LRO_NAC_DEM_Apollo_15_26N004E_150cmp_ds_100',
 			nodeId: 'j1_9',
 			parentId: 'pointclouds',
 			state: {
@@ -161,11 +163,11 @@
 				disabled: false,
 				checked: true,
 			},
-			url: '../user_pointclouds/green07/metadata.json',
+			url: '../user_pointclouds/LRO_NAC_DEM_Apollo_15_26N004E_150cmp_ds_100/metadata.json',
 			position: [
-				501.40599999999904,
-				500.875,
-				0.428,
+				82553.750040147,
+				771927.25010158,
+				-2258.452392578125,
 			],
 			rotation: [
 				0,
@@ -184,8 +186,8 @@
 					{
 						name: 'elevationRange',
 						value: [
-							0.428,
-							9999.993,
+							-2258.452392578125,
+							1084.547607421875,
 						],
 					},
 					{
@@ -203,150 +205,10 @@
 			},
 		},
 	],
-	paths: [
-		{
-			name: 'P_0A753A90',
-			isActive: true,
-			waypoints: [
-				{
-					location: {
-						x: 56035.065886718745,
-						y: 82269.04709375,
-						z: 5370.9201875,
-					},
-					sphereId: '6CF24CFC-9EE5-406E-8796-11848B6BFE45',
-				},
-				{
-					location: {
-						x: 72747.43725,
-						y: 20599.154296875,
-						z: 3773.344015625,
-					},
-					sphereId: '4E2153A5-2FE6-4FFA-9A32-2EBABFDC1996',
-				},
-				{
-					location: {
-						x: 26142.0935,
-						y: 55365.03515625,
-						z: 8563.6496796875,
-					},
-					sphereId: '61CDB312-2EA7-4DE3-815F-EE22FE49CDE8',
-				},
-				{
-					location: {
-						x: 41363.66771875,
-						y: 19439.212890625,
-						z: 5014.054953125,
-					},
-					sphereId: 'D7A4858F-C1E4-40B8-96BC-CA8C5E628472',
-				},
-				{
-					location: {
-						x: 86025.6794375,
-						y: 13295.8115234375,
-						z: 4403.41091015625,
-					},
-					sphereId: '82E84D6E-40A2-4F7C-A427-F2519B5D5238',
-				},
-				{
-					location: {
-						x: 70380.29684375,
-						y: 75568.87521875,
-						z: 508.49001171875,
-					},
-					sphereId: '268EA7F0-D729-48CE-964A-50B1D734E497',
-				},
-			],
-			uuid: '90FD8849-C73D-45CB-8A2E-ABDAA2B566E2',
-			sphereIds: [
-				'6CF24CFC-9EE5-406E-8796-11848B6BFE45',
-				'4E2153A5-2FE6-4FFA-9A32-2EBABFDC1996',
-				'61CDB312-2EA7-4DE3-815F-EE22FE49CDE8',
-				'D7A4858F-C1E4-40B8-96BC-CA8C5E628472',
-				'82E84D6E-40A2-4F7C-A427-F2519B5D5238',
-				'268EA7F0-D729-48CE-964A-50B1D734E497',
-			],
-			showDistances: false,
-			showArea: false,
-			closed: false,
-			showEdges: true,
-			color: [
-				1,
-				0.03137254901960784,
-				0,
-			],
-			points: [
-				[
-					56035.065886718745,
-					82269.04709375,
-					5370.9201875,
-				],
-				[
-					72747.43725,
-					20599.154296875,
-					3773.344015625,
-				],
-				[
-					26142.0935,
-					55365.03515625,
-					8563.6496796875,
-				],
-				[
-					41363.66771875,
-					19439.212890625,
-					5014.054953125,
-				],
-				[
-					86025.6794375,
-					13295.8115234375,
-					4403.41091015625,
-				],
-				[
-					70380.29684375,
-					75568.87521875,
-					508.49001171875,
-				],
-			],
-		},
-	],
+	paths: [],
 	areas: [],
 	regions: [],
-	pois: [
-		{
-			name: 'P_198F590A',
-			isActive: true,
-			waypoints: [
-				{
-					location: {
-						x: 29724.367046875,
-						y: 26946.864000976562,
-						z: 7163.23805859375,
-					},
-					sphereId: 'C64074F9-1A16-4F82-B684-662FB7577ABD',
-				},
-			],
-			uuid: 'BCA11C40-6B12-4C1E-9310-09BE71BF2EE5',
-			sphereIds: [
-				'C64074F9-1A16-4F82-B684-662FB7577ABD',
-			],
-			showDistances: false,
-			showArea: false,
-			closed: true,
-			showEdges: true,
-			color: [
-				1,
-				0.03137254901960784,
-				0,
-			],
-			points: [
-				[
-					29724.367046875,
-					26946.864000976562,
-					7163.23805859375,
-				],
-			],
-		},
-	],
+	pois: [],
 	measurements: [],
 	volumes: [],
 	tags: [],
