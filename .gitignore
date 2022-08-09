@@ -20,3 +20,9 @@ __pycache__
 *.laz
 *.tif
 *.tiff
+
+/tmp
+package-lock.json
+potree.json5
+tmp.las
+LRO_NAC_DEM_Apollo_15_26N004E_150cmp_ds_100.tif
