@@ -21,7 +21,7 @@ __pycache__
 *.tif
 *.tiff
 
-tmp
+/tmp
 package-lock.json
 potree.json5
 tmp.las
