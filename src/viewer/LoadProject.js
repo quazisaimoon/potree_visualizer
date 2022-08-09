@@ -467,17 +467,29 @@ function loadClassification(viewer, data) {
 }
 
 function loadMissionSpecs(viewer, data) {
+  console.log(viewer);
   if (!data) {
     return;
   }
 
-  document.getElementById("mission_spec_title").value = data.missionTitle;
-  document.getElementById("mission_spec_description").value =
-    data.missionDescription;
-  document.getElementById("mission_spec_start_date").value =
-    data.missionStartDate;
-  document.getElementById("mission_spec_start_time").value =
-    data.missionStartTime;
+  // Grab DOM elements
+  const titleInput = document.getElementById("mission_spec_title");
+  const descriptionInput = document.getElementById("mission_spec_description");
+  const startDateInput = document.getElementById("mission_spec_start_date");
+  const startTimeInput = document.getElementById("mission_spec_start_time");
+
+  // Set mission specs data to input fields (visually) as well as to the missionSpecs object
+  titleInput.value = data.missionTitle;
+  viewer.missionSpecs.missionTitle = data.missionTitle;
+
+  descriptionInput.value = data.missionDescription;
+  viewer.missionSpecs.missionDescription = data.missionDescription;
+
+  startDateInput.value = data.missionStartDate;
+  viewer.missionSpecs.missionStartDate = data.missionStartDate;
+
+  startTimeInput.value = data.missionStartTime;
+  viewer.missionSpecs.missionStartTime = data.missionStartTime;
 }
 
 export async function loadProject(viewer, data) {

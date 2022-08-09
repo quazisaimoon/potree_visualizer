@@ -403,8 +403,6 @@ export function saveProject(viewer) {
     ).toISOString();
   }
 
-  console.log(time);
-
   const data = {
     type: "Potree",
     version: 1.7,
