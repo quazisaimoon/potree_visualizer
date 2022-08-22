@@ -5,6 +5,7 @@ import { Gradients } from "./Gradients.js";
 import { Shaders } from "../../build/shaders/shaders.js";
 import { ClassificationScheme } from "./ClassificationScheme.js";
 import { PointSizeType, PointShape, TreeType, ElevationGradientRepeat } from "../defines.js";
+import {ZoneCategory} from "../defines.js";
 
 //
 // how to calculate the radius of a projected sphere in screen space
@@ -58,6 +59,10 @@ export class PointCloudMaterial extends THREE.RawShaderMaterial {
 
 		this._defaultIntensityRangeChanged = false;
 		this._defaultElevationRangeChanged = false;
+
+		this.noneBoxes = [];
+		this.greenBoxes = [];
+		this.redBoxes = [];
 
 		{
 			const [width, height] = [256, 1];
@@ -154,6 +159,17 @@ export class PointCloudMaterial extends THREE.RawShaderMaterial {
 			matcapTextureUniform: { type: "t", value: this.matcapTexture },
 			shadowTextureUniform: { type: "t", value: this.shadowTexture },
 			backfaceCulling: { type: "b", value: false },
+
+			zoneCategory:		{ type: "i", value: 1 }, // remove
+			randomNumber: 		{ type: "f", value: 0 }, // remove
+
+			noneBoxes:			{ type: "Matrix4fv", value: [] },			
+			greenBoxes:			{ type: "Matrix4fv", value: [] },
+			redBoxes:			{ type: "Matrix4fv", value: [] },
+
+			noneBoxCount: 		{type: "f", value: 0},
+			greenBoxCount:		{ type: "f", value: 0 },
+			redBoxCount:		{ type: "f", value: 0 },
 
 			xrange: { type: "2fv", value: [-1, 1] },
 			yrange: { type: "2fv", value: [-1, 1] },
@@ -288,13 +304,71 @@ export class PointCloudMaterial extends THREE.RawShaderMaterial {
 			return;
 		}
 
+		const noneBoxes = [];
+		const greenBoxes = [];
+		const redBoxes = [];
+
+		clipBoxes.forEach((clipBox) => {			
+			if (clipBox.box.zoneCategory === ZoneCategory.NONE) {
+				noneBoxes.push(clipBox)
+			}
+			
+			if (clipBox.box.zoneCategory === ZoneCategory.GO) {
+				greenBoxes.push(clipBox);
+			}
+			
+			if (clipBox.box.zoneCategory === ZoneCategory.NOGO) {
+				redBoxes.push(clipBox);
+			} 
+		});
+
 		let doUpdate = (this.clipBoxes.length !== clipBoxes.length) && (clipBoxes.length === 0 || this.clipBoxes.length === 0);
 
 		this.uniforms.clipBoxCount.value = this.clipBoxes.length;
 		this.clipBoxes = clipBoxes;
 
+		this.uniforms.clipBoxCount.value = this.clipBoxes.length;
+		// 
+		this.uniforms.noneBoxCount.value = this.noneBoxes.length;		
+		this.uniforms.greenBoxCount.value = this.greenBoxes.length;
+		this.uniforms.redBoxCount.value = this.redBoxes.length;
+
+		this.clipBoxes = clipBoxes;
+		//
+		this.noneBoxes = noneBoxes;
+		this.greenBoxes = greenBoxes;
+		this.redBoxes = redBoxes;
+
 		if (doUpdate) {
 			this.updateShaderSource();
+		}
+
+		this.uniforms.clipBoxes.value = new Float32Array(this.clipBoxes.length * 16);
+		//
+		this.uniforms.noneBoxes.value = new Float32Array(this.noneBoxes.length * 16);
+		this.uniforms.greenBoxes.value = new Float32Array(this.greenBoxes.length * 16);
+		this.uniforms.redBoxes.value = new Float32Array(this.redBoxes.length * 16);
+
+		for (let i = 0; i < this.clipBoxes.length; i++) {
+			let box = clipBoxes[i];
+
+			this.uniforms.clipBoxes.value.set(box.inverse.elements, 16 * i);
+		}
+		//
+		for (let i = 0; i < this.noneBoxes.length; i++) {
+			let box = noneBoxes[i];
+
+			this.uniforms.noneBoxes.value.set(box.inverse.elements, 16 * i);
+		}
+		for (let i = 0; i < this.greenBoxes.length; i++) {
+			let box = greenBoxes[i];
+
+			this.uniforms.greenBoxes.value.set(box.inverse.elements, 16 * i);
+		}
+		for (let i = 0; i < this.redBoxes.length; i++) {
+			let box = redBoxes[i];
+
+			this.uniforms.redBoxes.value.set(box.inverse.elements, 16 * i);
 		}
 
 		this.uniforms.clipBoxes.value = new Float32Array(this.clipBoxes.length * 16);
