@@ -619,6 +619,7 @@ export class Sidebar {
       elUpdateOccupancyGrid.click((event) => {
         let speed = elExport.find("#vehicle_speed")[0].value;
         let slope = elExport.find("#vehicle_max_slope")[0].value;
+        let pc_path=pc_name;
         if (speed < 0) {
           speed = -1 * speed;
         }
@@ -626,7 +627,7 @@ export class Sidebar {
           slope = -1 * slope;
         }
         const flaskURL = "http://127.0.0.1:5000/update_occupancy_grid";
-        let dataString = { "speed": speed, "slope": slope };
+        let dataString = { "speed": speed, "slope": slope,"pc_path":pc_path};
         fetch(flaskURL, {
           method: "post",
           headers: {
@@ -1331,6 +1332,7 @@ export class Sidebar {
 
       let node = null;
       // 'mount' a pointcloud into "Point Clouds" in jsTree
+      globalThis.pc_name=pointcloud.name;
       if (pointcloud.name !== "start") {
         node = createNode(
           parentId,
@@ -1355,6 +1357,7 @@ export class Sidebar {
           tree.jstree("uncheck_node", node);
         }
       });
+    
     };
 
     let onPathAdded = (e) => {
