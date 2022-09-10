@@ -209,7 +209,7 @@ export class Viewer extends EventDispatcher {
 
 					<span>
 						<div class="potree_toolbar_label" style="width: 12em">
-							Material
+							Display Mode
 						</div>
 
 						<div class="potree_toolbar_tool_container">
