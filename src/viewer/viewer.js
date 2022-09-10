@@ -195,7 +195,7 @@ export class Viewer extends EventDispatcher {
 							/>
 
 							<img 
-								name="action_measure_area" 
+								name="action_remove_measurements" 
 								src="${Potree.resourcePath}/icons/reset_tools.svg" 
 								class="annotation-action-icon" 
 								style="width: 2em; 
@@ -297,6 +297,17 @@ export class Viewer extends EventDispatcher {
             });
           });
 
+          elToolbar.find("img[name=action_measure_height]").click(() => {
+            const measurement = viewer.measuringTool.startInsertion({
+              showDistances: false,
+              showHeight: true,
+              showArea: false,
+              closed: false,
+              maxMarkers: 2,
+              name: "Height",
+            });
+          });
+
           elToolbar.find("img[name=action_measure_azimuth]").click(() => {
             const measurement = viewer.measuringTool.startInsertion({
               showDistances: false,
@@ -318,6 +329,9 @@ export class Viewer extends EventDispatcher {
               closed: true,
               name: "Area",
             });
+          });
+          elToolbar.find("img[name=action_remove_measurements]").click(() => {
+            viewer.scene.removeAllMeasurements();
           });
         }
 

@@ -175,25 +175,25 @@ export class Sidebar {
       )
     );
 
-    // TAG
-    elToolbar.append(
-      this.createToolIcon(
-        Potree.resourcePath + "/icons/tag.svg",
-        "[title]tt.tag",
-        () => {
-          const tag = this.tagTool.startInsertion();
+    // // TAG
+    // elToolbar.append(
+    //   this.createToolIcon(
+    //     Potree.resourcePath + "/icons/tag.svg",
+    //     "[title]tt.tag",
+    //     () => {
+    //       const tag = this.tagTool.startInsertion();
 
-          const waypointsRoot = $("#jstree_scene")
-            .jstree()
-            .get_json("waypoints");
-          const jsonNode = waypointsRoot.children.find(
-            (child) => child.data.uuid === tag.uuid
-          );
-          $.jstree.reference(jsonNode.id).deselect_all();
-          $.jstree.reference(jsonNode.id).select_node(jsonNode.id);
-        }
-      )
-    );
+    //       const waypointsRoot = $("#jstree_scene")
+    //         .jstree()
+    //         .get_json("waypoints");
+    //       const jsonNode = waypointsRoot.children.find(
+    //         (child) => child.data.uuid === tag.uuid
+    //       );
+    //       $.jstree.reference(jsonNode.id).deselect_all();
+    //       $.jstree.reference(jsonNode.id).select_node(jsonNode.id);
+    //     }
+    //   )
+    // );
 
     // REMOVE ALL
     elToolbar.append(
